@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular 8 tutorial</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<style type="text/css" media="screen">
+		body{
+			background-color: #333;
+			color: #fff;
+		}
+		.card{
+			padding: 30px;
+			color: #333;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="card mt-5 mb-5">
+			<h2>Angular 8 toggle class</h2>
+			[
+			<h5><i><b>Refarence Link:</b></i> <a href="" title="">https://stackoverflow.com/questions/44535515/angular-ngclass-and-click-event-for-toggling-class?rq=1</a></h5>
+
+
+			<h6>/* ====== component.html file  ========= */</h6>
+			<code>
+				               
+				 &lt;button type="	"  class="my_class" (click)="clickEvent()"   &gt;press &lt;/button &gt;
+				<br> <br>
+
+				&lt;h1 [ngClass]="sou ? 'success' : ''"&gt;	Some content &lt;/h1 &gt;
+				<br>
+					<b>or</b>
+				<br>
+				&lt;h1 [ngClass]="sou ? 'success' : 'danger'"&gt;	Some content &lt;/h1 &gt;
+
+			</code>	
+			<h6>/* ====== component.ts file  ========= */</h6>
+			<code>
+				sou: boolean = false;
+				clickEvent(){
+				    this.sou = !this.sou;       
+				}
+			</code>
+			
+		]
+		</div>
+
+
+		<div class="card mt-5 mb-5">
+			<h2>Angular 4 (click) changes the class of another element without using jQuery</h2>
+			<h5><i><b>Refarence Link:</b></i> <a href="" title="">https://stackoverflow.com/questions/44630684/angular-4-click-changes-the-class-of-another-element-without-using-jquery/44630868</a></h5>
+
+			<code>
+				
+				<h5>component.html</h5>
+				&lt;button (click)="shouldShow = !shouldShow"  &gt; Show/Hide &lt;/button&gt;
+				<br>
+				&lt;label [ngClass]="{show: shouldShow, hide: !shouldShow}" &gt; ... &lt;/label&gt;
+
+				<hr>
+
+				<h5>Component.ts</h5>
+				<p class="disable">// Make sure to add the variable in the component</p>
+					public shouldShow = true;
+
+					<hr>
+				<h5>Component.css</h5>
+				.show {
+				   opacity: 1;
+				   transition: opacity 1s;
+				}
+				<br>
+				.hide {
+				   opacity: 0;
+				   transition: opacity 1s;
+				}
+
+
+			</code>
+		</div>
+
+
+		<div class="card mt-5 mb-5">
+			<h2>Angular Host Listeners and Key Events</h2>
+
+			<h5><i><b>Refarence Link:</b></i> <a href="" title="">https://coryrylan.com/blog/listening-to-angular-key-events-with-host-listeners</a></h5>
+			<video autobuffer autoloop loop controls mute>
+				<source src="https://coryrylan.com/assets/video/posts/2017-01-06-listening-to-angular-key-events-with-host-listeners/angular-host-listener-example.mp4">		
+				
+			</video>
+			<br>
+			<code>
+				
+				<h5>Componet.html</h5>
+			&lt;button (click)="decrement()"&gt;-&lt;/button&gt; <br>
+				{{value}} <br>
+			&lt;button (click)="increment()"&gt;+&lt;/button&gt; 
+
+			<hr>
+
+			<h5>Componet.ts</h5>
+			<p class="mb-0">/* === Import HostListener === */</p>
+			import { Component, HostListener, OnInit } from '@angular/core';
+			<br>
+			<br>
+
+			export enum KEY_CODE { <br>
+			  &#160;&#160;  RIGHT_ARROW = 39, <br>
+			  &#160;&#160;  LEFT_ARROW = 37 <br>
+			}
+
+			<p class="mb-0">/* === Add code in class === */</p>
+
+			export class AppComponent { <br> <br>
+			  <div class="pl-5">
+			  	value = 0; <br>
+				  @HostListener('window:keyup', ['$event']) <br>
+				  keyEvent(event: KeyboardEvent) { <br>
+				    console.log(event); <br> <br>
+				    
+				    if (event.keyCode === KEY_CODE.RIGHT_ARROW) { <br>
+				      this.increment(); <br>
+				    }<br> <br>
+
+				    if (event.keyCode === KEY_CODE.LEFT_ARROW) { <br>
+				      this.decrement(); <br>
+				    }<br>
+				  }<br> <br>
+
+				  increment() { <br>
+				    this.value++; <br>
+				  } <br> <br>
+				  
+				  decrement() { <br>
+				  	if (this.value==0){ <br>
+				  		return; <br>
+				  	}<br>
+				    this.value--; <br>
+				  }<br> <br>
+			  </div>
+			}
+			</code>
+
+		</div>
+
+
+		<div class="card">
+			<h3>Just links</h3>
+
+			<code>
+				<P class="mb-0"><B>Angular2-carousel</B></P>
+			[
+				<a href="" title="">https://www.npmjs.com/package/angular2-carousel</a> <br>
+				<a href="" title="">https://mihnsen.github.io/ui-carousel/</a>
+			]
+
+			<br> 
+			<br> 
+			<P class="mb-0"><b>Slick slider</b></P>
+			[
+				<a href="" title="">https://www.npmjs.com/package/ngx-slick-carousel</a>
+			]
+
+			<br> 
+			<br> 
+
+			<P class="mb-0"><b>Go to top</b></P>
+			[
+			  <a href="" title="">https://stackblitz.com/edit/angular-scrolling-goto-top</a>
+			]
+			</code>
+
+		</div>
+
+	</div>
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
