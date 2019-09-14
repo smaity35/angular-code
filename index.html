@@ -21,6 +21,38 @@
 	<div class="container">
 
 		<div class="card mt-5 mb-5">
+				<h2>Dynamic get height and put height</h2>
+
+				<p class="mb-1"><b>Write in component.html</b></p>
+				<code class="pl-3">
+					&lt;header  class="" #mainHead&gt; &lt;/header&gt;<!-- /header --> <br>
+
+					&lt;div class="heder-gap" [style.height.px]="viewHeight"&gt;&lt;/div&gt;
+				</code>
+
+				<p class="mb-1"><b>Write in component.ts</b></p>
+				<code class="pl-3">
+					<i>//add new import (ElementRef, ViewChild, AfterViewInit)</i> <br>
+					import { Component, HostListener , ElementRef, ViewChild, OnInit, AfterViewInit } from '@angular/core'; <br> <br>
+
+					export class BuyerHeaderComponent implements AfterViewInit , OnInit{ <br> <br>
+
+						<div class="pl-3">
+							@ViewChild('mainHead',{static: false}) elementView: ElementRef; <br>
+							viewHeight: number; <br>
+
+							ngAfterViewInit() { <br>
+							   &#160;&#160;const self = this; <br>
+							   &#160;&#160;setTimeout(function(){ <br>
+							         &#160;&#160;&#160;&#160;self.viewHeight = self.elementView.nativeElement.offsetHeight; <br>
+							         &#160;&#160;&#160;&#160;console.log(self.viewHeight); <br>
+							   &#160;&#160;},0);<br>
+							}
+						</div> <br>
+
+					}
+
+				</code>
 		</div>
 
 
