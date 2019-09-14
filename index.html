@@ -19,6 +19,90 @@
 <body>
 
 	<div class="container">
+
+		<div class="card mt-5 mb-5">
+		</div>
+
+
+
+
+
+		<div class="card mt-5 mb-5">
+			<h2>Dynamic product Img magnifing</h2>
+			<article>
+				<b>Stape 1:</b> Add ngx-image-zoom and then, <b>Stape 2:</b> Do image list ul li.	
+			</article>
+
+			<h3><b>Stape 1:</b></h3>
+			<code>
+				<p>Install ngx-image-zoom [ npm install ngx-image-zoom --save ] from <a href="https://www.npmjs.com/package/ngx-image-zoom" title="">https://www.npmjs.com/package/ngx-image-zoom</a></p>
+
+				<p class="mb-1"><b>Import library in AppModule.ts</b></p>
+				// Import the library <br>
+				import { NgxImageZoomModule } from 'ngx-image-zoom';<br>
+				<br>
+				@NgModule({
+					<div class="pl-3">
+						imports: [ <br>
+						    &#160;&#160;&#160;&#160;&#160;NgxImageZoomModule.forRoot() // <-- Add this line <br>
+						],
+					</div>
+				})
+
+				<br> <br>
+				<p class="mb-1"><b>Write in component.html</b></p>
+					<div class="pl-3 mb-3">
+						&lt;ngx-image-zoom     [thumbImage]=myThumbnail     [fullImage]=myFullresImage &gt; &lt;/ngx-image-zoom&gt;
+					</div> 
+
+				<p class="mb-1"><b>Write in component.ts</b></p>
+				<div class="pl-3">
+					myThumbnail="assets/images/product07.jpg";<br>
+					myFullresImage:string="assets/images/product07.jpg";
+				</div>
+
+				<hr>
+				
+			</code>
+			<h3><b>Stape 2:</b></h3>
+			<p class="mb-1"><b>Write in component.html</b></p>
+			<code>				
+				<div class="pl-3">
+					&lt;div class="img-small-thumb"&gt; <br>
+						&#160;&#160;&#160; &lt;ul&gt; <br>
+							&#160;&#160;&#160; &#160;&#160;&#160; &lt;li *ngFor="let proImg of proDetailsImg" &gt; <br>
+								 &#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160;&#160; &lt;img src="{{proImg.img}}" alt="" (click)="clickSubmitImg(proImg.img)"  &gt; <br>
+							 &#160;&#160;&#160;&#160;&#160;&#160; &lt;/li&gt; <br>
+						 &#160;&#160;&#160; &lt;/ul&gt; <br>
+					&lt;/div&gt;
+					
+				</div>
+			</code>	
+			<p class="mb-1"><b>Write in component.ts</b></p>
+			<code class="pl-4">
+				proDetailsImg=[ <br>
+					<div class="pl-3">
+						{img:"assets/images/pd1.jpg"},<br>
+					{img:"assets/images/pd2.jpg"},<br>
+					{img:"assets/images/pd3.jpg"},<br>
+					{img:"assets/images/pd4.jpg"}<br>
+					</div>
+				] <br>
+
+				clickSubmitImg(imgUrl: string){
+					<div class="pl-3">
+						console.log(imgUrl); <br>
+						this.myThumbnail=imgUrl; <br>
+						this.myFullresImage=imgUrl; <br>
+					</div>
+				}
+			</code>	
+			<br>
+			<img src="images/img1.png" alt="" width="400">
+
+		</div>
+
+
 		<div class="card mt-5 mb-5">
 			<h2>Angular 8 toggle class</h2>
 			[
@@ -82,7 +166,7 @@
 
 			</code>
 		</div>
-
+		
 
 		<div class="card mt-5 mb-5">
 			<h2>Angular Host Listeners and Key Events</h2>
@@ -145,6 +229,58 @@
 			}
 			</code>
 
+		</div>
+
+		<div class="card mt-5 mb-5">
+			<h2>Get Console options from Events and  button click value set in html tag</h2>
+
+			<code>
+				<h5>component.html</h5>
+				&lt;button [ngClass]="{'active': isAccountType}" (click)="onArtistClick($event)"&gt;&lt;/button&gt; <br>
+				 &lt;button class="org-btn" [ngClass]="{'active': !isAccountType}" (click)="onOrganisationClick($event)"&gt;&lt;/button&gt;
+ 				<br> <br>
+				<h5>Component.ts</h5>
+
+				isArtistActive = true; <br>
+				showData : boolean; <br>
+
+				onArtistClick(event: MouseEvent) { <br>
+					console.log(event.altKey); <br>
+					this.showData = event.altKey; <br>
+
+					this.isArtistActive = true; <br>
+					$(".organistion-form").slideUp(); <br>
+					$(".artist-form").slideDown();
+				}
+
+			</code>
+
+			<hr>
+			<code>
+				<h5>component.html</h5>
+				&lt;p&gt;Soping for : {{art}}&lt;/p&gt;
+				&lt;button [ngClass]="{'active': isAccountType}" (click)="onArtistClick($event)"&gt;&lt;/button&gt; <br>
+				 &lt;button class="org-btn" [ngClass]="{'active': !isAccountType}" (click)="onOrganisationClick($event)"&gt;&lt;/button&gt;
+
+				 <br> <br>
+				<h5>Component.ts</h5>
+				isAccountType = true; <br>
+				art = "Artist"; //click value<br>
+				onArtistClick(event: Event) { <br>
+					this.isAccountType = true; <br>
+					this.art="Artist"; <br>
+					$(".organistion-form").slideUp(); <br> 
+					$(".artist-form").slideDown(); <br>
+				}
+
+				onOrganisationClick(event: Event) { <br>
+					this.isAccountType = false; <br>
+					this.art="Organization";  //click value<br>
+					$(".artist-form").slideUp(); <br>
+					$(".organistion-form").slideDown(); <br>
+				}
+
+			</code>
 		</div>
 
 
