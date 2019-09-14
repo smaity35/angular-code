@@ -14,6 +14,12 @@
 			padding: 30px;
 			color: #333;
 		}
+		code{
+			background-color:#282923;
+			padding:30px;
+			border-radius: 5px;
+			color: pink;
+		}
 	</style>
 </head>
 <body>
@@ -21,10 +27,54 @@
 	<div class="container">
 
 		<div class="card mt-5 mb-5">
+			<h2>Increment 	Decrement in loop</h2>
+			<p class="mb-1"><b>Write in component.html</b></p>
+			<code class="mb-5">
+				&lt;ul *ngFor="let love of loves; let idx = index"&gt; <br>
+					&#160;&#160;&#160;&lt;li&gt;{{love.img}}  <br>
+						&#160;&#160;&#160;&#160;&#160;&#160;&lt;div class="quenty"&gt; <br>
+							&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;a (click)="dec(idx)"&gt;&lt;i class="material-icons"&gt;remove&lt;/i&gt;&lt;/a&gt; <br>
+								&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;b&gt;{{love.id}}&lt;/b&gt; <br>
+							&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;a (click)="inc(idx)"&gt;&lt;i class="material-icons"&gt;add&lt;/i&gt;&lt;/a&gt; <br>
+						&#160;&#160;&#160;&#160;&#160;&#160;&lt;/div&gt; <br>
+					&#160;&#160;&#160;	&lt;/li&gt; <br>
+				&lt;/ul&gt;<br>
+
+			</code>
+
+			<p class="mb-1"><b>Write in component.ts</b></p>
+
+			<code class="mb-5">
+				loves=[ <br>
+				&#160;&#160;{img:'assets/images/pd1.jpg',id:0}, <br>
+				&#160;&#160;{img:'assets/images/pd1.jpg',id:0}, <br>
+				&#160;&#160;{img:'assets/images/pd1.jpg',id:0}, <br>
+				&#160;&#160;{img:'assets/images/pd1.jpg',id:0}, <br>
+				&#160;&#160;{img:'assets/images/pd1.jpg',id:0}, <br>
+				&#160;&#160;{img:'assets/images/pd1.jpg',id:0} <br>
+				]
+
+				<br> <br>
+				inc(qp) { <br>
+					&#160;&#160;this.loves[qp].id++; <br>
+				}<br> <br>
+
+				dec(qp) { <br>
+					&#160;&#160;if (this.loves[qp].id==0){ <br>
+						&#160;&#160;&#160;&#160;return;<br>
+					&#160;&#160;}<br>
+					&#160;&#160;this.loves[qp].id--<br>
+				}
+			</code>
+
+			<img src="images/img2.png" alt="" width="500">
+		</div>
+
+		<div class="card mt-5 mb-5">
 				<h2>Dynamic get height and put height</h2>
 
 				<p class="mb-1"><b>Write in component.html</b></p>
-				<code class="pl-3">
+				<code class="pl-3 mb-4">
 					&lt;header  class="" #mainHead&gt; &lt;/header&gt;<!-- /header --> <br>
 
 					&lt;div class="heder-gap" [style.height.px]="viewHeight"&gt;&lt;/div&gt;
